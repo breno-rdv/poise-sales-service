@@ -84,3 +84,64 @@ Create your first gRPC service
 
 [Related guide section...](https://quarkus.io/guides/grpc-getting-started)
 
+### Kafka
+
+Message, event, streaming
+
+Cluster
+Composed by N Brokers
+
+Brokers
+Capable of distribute, replicate events
+
+Producers
+Can set partition
+Partition key (FIFO), opposed to Streaming
+ACK > throughput <
+Batch size (message grouping) - otimization, less reliable
+Linger time (work along with batch)
+
+consumers
+Do not share partition
+Consumer Group (different functions for the same event)
+Do not exist horizontal scalabitity (due to partition limitation)
+
+topic
+Category of events (feed)
+Can have many consumers, by subscribing to this event
+
+partition
+Paralesmin for topis (as load balancer)
+Sharding via partition key
+Unbalance partitions
+
+replication factor
+When created a topic, make sure the topic can be replicated in other brokers
+replicatio factor <= broker
+
+### Message
+
+Protocols
+# MQTT
+over TCP
+Bandwith and network limit
+Brokers and topics
+Default subscription (1 * N)
+Shared subscription (balanced)
+
+# AMQP
+more functionalities then MQTT
+Used for distributed systems (RabbitMQ)
+
+Exchange (routing/binding)
+Many queues sharing the same exchange
+
+Direct Exchanges
+Standard - using binding keys to route (point-to-point)
+
+Topic Exchanges
+More flexible than, based on patterns defined, using wild cards, i.e. faturamento.#
+
+Fanout Exchanges
+Replicate from exchange to many queues
+Same message to many queues

@@ -31,6 +31,24 @@ services:
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
     networks:
       - kafka_net
+  init-kafka:
+    image: confluentinc/cp-kafka:6.1.1
+    depends_on:
+      - kafka
+    networks:
+    - kafka_net
+    entrypoint: [ '/bin/sh', '-c' ]
+    command: |
+      "
+      kafka-topics --bootstrap-server kafka:9092 --list
+
+      echo -e 'Creating kafka topics'
+      kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic my-topic-1 --replication-factor 1 --partitions 1
+      kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic my-topic-2 --replication-factor 1 --partitions 1
+
+      echo -e 'Successfully created the following topics:'
+      kafka-topics --bootstrap-server kafka:9092 --list
+      "
   sales-service:
     build:
       context: .

@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.poise.sales.api.grpc";
+option java_outer_classname = "VisitCommandsProto";
+
+package visit.commands;
+
+import "google/protobuf/timestamp.proto";
+
+service VisitCommandService {
+    rpc ScheduleVisit (ScheduleVisitRequest) returns (ScheduleVisitResponse) {}
+    rpc ConfirmVisit (ConfirmVisitRequest) returns (ConfirmVisitResponse) {}
+    rpc CancelVisit (CancelVisitRequest) returns (CancelVisitResponse) {}
+}
+
+enum VisitState {
+    VISIT_STATE_UNSPECIFIED = 0;
+    DRAFT = 1;
+    HOLD_PENDING = 2;
+    TENTATIVE = 3;
+    CONFIRMED = 4;
+    CANCELED = 5;
+    EXPIRED = 6;
+    COMPLETED = 7;
+}
+
+message ScheduleVisitRequest {
+    string customer_id = 1;
+    string vehicle_id = 2;
+    string dealer_id = 3;
+    google.protobuf.Timestamp proposed_time = 4;
+    string idempotency_key = 5;
+    string correlation_id = 6;
+}
+
+message ScheduleVisitResponse {
+    string visit_id = 1;
+    VisitState state = 2;
+}
+
+message ConfirmVisitRequest {
+    string visit_id = 1;
+    string dealer_id = 2;
+    string idempotency_key = 3;
+    string correlation_id = 4;
+}
+
+message ConfirmVisitResponse {
+    string visit_id = 1;
+    VisitState state = 2;
+}
+
+message CancelVisitRequest {
+    string visit_id = 1;
+    string actor_id = 2;
+    string reason = 3;
+    string idempotency_key = 4;
+    string correlation_id = 5;
+}
+
+message CancelVisitResponse {
+    string visit_id = 1;
+    VisitState state = 2;
+}

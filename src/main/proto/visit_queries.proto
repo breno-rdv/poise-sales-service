@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.poise.sales.api.grpc";
+option java_outer_classname = "VisitQueriesProto";
+
+package visit.queries;
+
+import "visit_commands.proto";
+
+service VisitQueryService {
+    rpc GetVisit (GetVisitRequest) returns (VisitSummary) {}
+    rpc ListVisitsByCustomer (ListVisitsByCustomerRequest) returns (ListVisitsResponse) {}
+    rpc ListVisitsByDealer (ListVisitsByDealerRequest) returns (ListVisitsResponse) {}
+}
+
+message GetVisitRequest {
+    string visit_id = 1;
+}
+
+message ListVisitsByCustomerRequest {
+    string customer_id = 1;
+}
+
+message ListVisitsByDealerRequest {
+    string dealer_id = 1;
+}
+
+message VisitSummary {
+    string visit_id = 1;
+    string customer_id = 2;
+    string vehicle_id = 3;
+    string dealer_id = 4;
+    visit.commands.VisitState state = 5;
+    string proposed_time = 6;
+    string confirmation_deadline = 7;
+    string cancel_reason = 8;
+    string updated_at = 9;
+}
+
+message ListVisitsResponse {
+    repeated VisitSummary visits = 1;
+}

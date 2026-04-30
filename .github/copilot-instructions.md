@@ -249,8 +249,8 @@ The current `HelloGrpcServiceTest` is a placeholder and should eventually be rep
 ## Delivery Approach
 Build the system in thin vertical slices:
 1. Replace hello gRPC contracts with visit command/query contracts (implemented)
-2. Implement the `Visit` aggregate and transition rules
-3. Add persistence for `visits`
+2. Implement the `Visit` aggregate and transition rules (Implemented)
+3. Add persistence for `visits` (Implemented)
 4. Implement `ScheduleVisit` and publish `HoldVehicleCommand`
 5. Consume `VehicleHoldConfirmed` and `VehicleHoldFailed`
 6. Add deadline scheduling and expiration flow

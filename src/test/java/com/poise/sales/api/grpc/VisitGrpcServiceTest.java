@@ -21,20 +21,20 @@ class VisitGrpcServiceTest {
     VisitQueryService visitQueryService;
 
     @Test
-    void scheduleVisit_returnsDraftVisit() {
+    void scheduleVisit_returnsHoldPendingVisit() {
         ScheduleVisitResponse response = visitCommandService.scheduleVisit(
                 ScheduleVisitRequest.newBuilder()
                         .setCustomerId("cust-1")
                         .setVehicleId("veh-1")
                         .setDealerId("dealer-1")
-                        .setIdempotencyKey("idem-1")
-                        .setCorrelationId("corr-1")
+                        .setIdempotencyKey("idem-grpc-1")
+                        .setCorrelationId("corr-grpc-1")
                         .build()
         ).await().atMost(Duration.ofSeconds(5));
 
         assertNotNull(response.getVisitId());
         assertFalse(response.getVisitId().isBlank());
-        assertEquals(VisitState.DRAFT, response.getState());
+        assertEquals(VisitState.HOLD_PENDING, response.getState());
     }
 
     @Test

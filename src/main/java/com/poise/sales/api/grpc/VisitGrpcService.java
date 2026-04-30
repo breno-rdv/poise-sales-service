@@ -1,19 +1,21 @@
 package com.poise.sales.api.grpc;
 
+import com.poise.sales.application.command.ScheduleVisitHandler;
 import io.quarkus.grpc.GrpcService;
 import io.smallrye.mutiny.Uni;
-
-import java.util.UUID;
+import jakarta.inject.Inject;
 
 @GrpcService
 public class VisitGrpcService implements VisitCommandService {
 
+    @Inject
+    ScheduleVisitHandler scheduleVisitHandler;
+
     @Override
     public Uni<ScheduleVisitResponse> scheduleVisit(ScheduleVisitRequest request) {
-        return Uni.createFrom().item(ScheduleVisitResponse.newBuilder()
-                .setVisitId(UUID.randomUUID().toString())
-                .setState(VisitState.DRAFT)
-                .build());
+        return scheduleVisitHandler
+                .handle(VisitGrpcMapper.toScheduleCommand(request))
+                .map(VisitGrpcMapper::toScheduleResponse);
     }
 
     @Override
@@ -32,3 +34,4 @@ public class VisitGrpcService implements VisitCommandService {
                 .build());
     }
 }
+

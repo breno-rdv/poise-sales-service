@@ -145,3 +145,29 @@ More flexible than, based on patterns defined, using wild cards, i.e. faturament
 Fanout Exchanges
 Replicate from exchange to many queues
 Same message to many queues
+
+# Saga
+Motivation
+Consistency among services, multiple domains
+Long-lived transactions (hours, days to "commit" transaction)
+
+# Features
+Each step has an action and compensation
+More powerful ACID
+Supports Eventual Consistency
+
+## Choreography
+Data pipeline
+There is no central coordinator
+Each microservice knows next step
+Less overhead
+
+Compensation
+Service that fails activate rollback
+Central topic can be used as Panic button
+
+## Orchestration
+Central orchestrator (like a Control Plane)
+Workflow pattern
+State Machine Pattern
+Command / Reply (Topics)

@@ -12,7 +12,6 @@ The Sales Service owns the visit and purchase coordination workflow for the sale
 - Emitting sales-domain events
 - Maintaining a low-latency read model for the BFF and frontend
 
-This service is not a CRUD API. It is a workflow orchestrator built around CQRS, event-driven integration, and compensating transactions.
 
 ## Target Architecture
 

@@ -1,5 +1,13 @@
 # poise-sales-service
 Microservice for Sales Domain
+It owns the visit and purchase coordination workflow for the Sales Domain. It is responsible for:
+- Managing the `Visit` lifecycle
+- Orchestrating the booking saga with Inventory
+- Handling dealer confirmation deadlines
+- Emitting sales-domain events
+- Maintaining a low-latency read model to serve BFF
+
+This service is not a CRUD API. It is a workflow orchestrator built around CQRS, event-driven integration, and compensating transactions.
 
 Technology
 Quarkus  - LTS
@@ -171,3 +179,17 @@ Central orchestrator (like a Control Plane)
 Workflow pattern
 State Machine Pattern
 Command / Reply (Topics)
+
+### State Machine in Saga
+Works well with Event Sourcing
+
+Actual State -> Event Received -> Next state
+
+- Compensation
+Each action has a compensation step
+Workflows to undo operations
+Semantically inverted steps (book / unbook)
+Adds consistency
+Transactional logs for Saga (auditing/debbuging)
+Using Dual Write (database + event)
+Outbox and CDC helps on consistency

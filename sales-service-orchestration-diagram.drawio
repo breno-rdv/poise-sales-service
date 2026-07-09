@@ -1,0 +1,22 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="OtJmDSgMmqJOkKgm2aDL">
+    <mxGraphModel dx="964" dy="717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="95RCLVI1cUlb_wy0knZr-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" value="&lt;font face=&quot;Comic Sans MS&quot;&gt;Sales Service Orchestrator&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="220" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="95RCLVI1cUlb_wy0knZr-3" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;rotation=90;sketch=1;curveFitting=1;jiggle=2;" value="" vertex="1">
+          <mxGeometry height="250" width="40" x="495" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="95RCLVI1cUlb_wy0knZr-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Comic Sans MS;" value="Topic" vertex="1">
+          <mxGeometry height="30" width="60" x="485" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="95RCLVI1cUlb_wy0knZr-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;" value="&lt;font face=&quot;Comic Sans MS&quot;&gt;State&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="365" y="415" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

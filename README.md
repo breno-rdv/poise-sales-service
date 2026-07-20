@@ -193,3 +193,44 @@ Adds consistency
 Transactional logs for Saga (auditing/debbuging)
 Using Dual Write (database + event)
 Outbox and CDC helps on consistency
+
+## Parallelism and concurrency
+
+Concurrency allows multicore processors usage to optimize resources.
+Helps to handle workloads effectively.
+Improves user experience.
+Real-time processing and big data requires concurrency.
+
+### Basics of concurrency
+Process: independent program running in its own memory space;
+Threads: lightweight unit of execution within a process (they share memory);
+Synchronization: Coordinate execution when working on the same resource;
+- Synchronized
+- Lock objects
+- Atomic classes
+- Volatile keyword
+Thread safety: Behaves correctly when accessed from multiple threads;
+
+#### Executors and Thread Pools
+The Executor framework separates task submission from task execution, providing a more flexible and efficient way to manage threads;
+
+ExecutorService interface for managing thread lifecycle
+Different types of thread pools:
+- Fixed (when there are limited resources)
+- Cached
+- Scheduled (fixed with schedule)
+- Single-threaded executor (tasks in queue executed in sequency)
+
+Benefits:
+- Reuse of threads reduces overhead
+- Improve application performance
+
+*Concurrent collections*
+- ConcurrentHashMap
+- CopyOnWriteArrayList (threa-safe variant of ArrayList)
+- ConcurrentLinkedQueue
+
+*Synchronizers*
+- CountDownLatch (allows one or more threads to wait until a set of operations in other threads completes)
+- CyclicBarrier (Enables a set of threads to wait for each other to reach a common barrier point)
+- Semaphore (controls access to a shared resource through a counter)
